@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roohvi — Voice-first AI wellness companion</title>
+<meta name="description" content="Roohvi listens in Urdu, Roman Urdu or English, offers one small coping step, and shows the right local helpline when it matters. An AI companion, not a doctor.">
+<meta name="theme-color" content="#07120f">
+<meta property="og:type" content="website"><meta property="og:title" content="Roohvi: voice-first AI wellness companion">
+<meta property="og:description" content="Listens in Urdu, Roman Urdu or English, offers one small coping step, and shows the right helpline when it matters. An AI companion, not a doctor.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231f9d7f'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#07120f;--card:#0d1f1a;--line:#1d3b33;--text:#e8f3ef;--mute:#9bb5ac;--acc:#3fd1a8;--acc2:#1f9d7f;--warn:#e0a08a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3faf7;--card:#fff;--line:#cfe5dd;--text:#0c2a22;--mute:#4c6b61;--acc:#0e8a6c;--acc2:#0b6e57;--warn:#9a4a32}}
+:root[data-theme="light"]{--bg:#f3faf7;--card:#fff;--line:#cfe5dd;--text:#0c2a22;--mute:#4c6b61;--acc:#0e8a6c;--acc2:#0b6e57;--warn:#9a4a32}
+:root[data-theme="dark"]{--bg:#07120f;--card:#0d1f1a;--line:#1d3b33;--text:#e8f3ef;--mute:#9bb5ac;--acc:#3fd1a8;--acc2:#1f9d7f;--warn:#e0a08a}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+img{max-width:100%;display:block}
+a{color:var(--acc);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;letter-spacing:.08em;display:flex;gap:10px;align-items:center;color:var(--text)}
+.logo i{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:inline-block}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14px}
+nav ul a{color:var(--mute)}
+@media(max-width:640px){nav ul li:not(:last-child){display:none}}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;border:1px solid var(--acc);color:var(--acc)}
+.btn.p{background:var(--acc);color:#04130e}
+.hero{padding:64px 0 40px;text-align:center}
+.pill{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:5px 14px;color:var(--mute);background:var(--card)}
+h1{font-size:clamp(40px,7vw,72px);line-height:1.05;margin:20px 0 6px;letter-spacing:-.02em}
+.ur{font-size:clamp(22px,3.5vw,32px);color:var(--acc);margin:0 0 18px;font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq",serif}
+.lead{max-width:680px;margin:0 auto 28px;color:var(--mute);font-size:18px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.shot{margin-top:44px;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px -30px #000a}
+.disc{margin:28px auto 0;max-width:820px;border:1px solid color-mix(in srgb,var(--warn) 55%,transparent);color:var(--warn);border-radius:12px;padding:10px 16px;font-size:14px;text-align:center}
+section{padding:64px 0}
+h2{font-size:clamp(28px,4vw,40px);margin:0 0 10px;letter-spacing:-.01em}
+.sub{color:var(--mute);max-width:700px;margin:0 0 32px}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{margin:0 0 6px;font-size:18px}.card p{margin:0;color:var(--mute);font-size:15px}
+.ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;margin-bottom:14px;background:color-mix(in srgb,var(--acc) 16%,transparent)}
+.stat b{display:block;font-size:44px;color:var(--acc);line-height:1.1}
+.src{font-size:13px;color:var(--mute);margin-top:16px}
+.barriers{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.barriers span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;background:var(--card)}
+.alt{background:color-mix(in srgb,var(--card) 55%,transparent);border-block:1px solid var(--line)}
+.gal{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.gal{grid-template-columns:1fr}}
+.gal figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.gal img{cursor:zoom-in;width:100%}
+.gal figcaption{padding:14px 18px;font-size:14px;color:var(--mute)}.gal figcaption b{color:var(--text)}
+#lb{position:fixed;inset:0;background:#000d;display:none;place-items:center;z-index:50;padding:20px;cursor:zoom-out}
+#lb.on{display:grid}#lb img{max-height:92vh;border-radius:10px}
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--mute);font-size:14px;text-align:center}
+footer b{color:var(--text)}
+
+.app{position:relative;background:#050d0b;color:#e8f3ef;border:1px solid #1d3b33;border-radius:20px;padding:14px;display:grid;gap:12px;grid-template-columns:230px 1fr 250px;box-shadow:0 30px 80px -30px #000a;font-size:14px}
+.app .hd{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #1d3b33;border-radius:16px;padding:10px 16px}
+.app .hd small{display:block;color:#8fb0a5;font-size:12px}.app .tm{text-align:right}
+.app .pn{border:1px solid #1d3b33;border-radius:16px;padding:14px;background:#08150f}
+.app h4{margin:0 0 10px;font-size:15px}
+.app button{font:inherit;color:inherit;cursor:pointer;background:none;border:1px solid #1d3b33;border-radius:10px;padding:8px 12px;text-align:left}
+.app button:hover{border-color:#3fd1a8}
+.app>*,.app .act button{min-width:0}.app .col{display:grid;gap:12px;align-content:start}
+.app .nv button{display:block;width:100%;border:0;padding:9px 6px}
+.app .tr{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #12291f;color:#8fb0a5}
+.app .qa button{display:block;width:100%;margin-bottom:8px}
+.app .help{border-color:#7a3d33;background:#2a1411;border-radius:999px;color:#ffb8a5}
+.app .say button{display:block;width:100%;border:0;border-bottom:1px solid #12291f;border-radius:0}
+.app .act{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.app .act button{text-align:center;padding:8px 0;font-size:10.5px;border:0;overflow:hidden}
+.app .act b{display:block;width:40px;height:40px;margin:0 auto 4px;border-radius:12px;font-size:18px;line-height:40px;font-weight:400}
+.app .ctr{display:flex;flex-direction:column;gap:10px;min-height:560px}
+.app .wl{display:flex;gap:14px;align-items:center}.app .wl b{font-size:26px;display:block;line-height:1.1}
+.app .bar{width:54px;height:54px;border-radius:50%;border:1px solid #3fd1a8;display:grid;place-items:center;color:#3fd1a8;font-size:22px;flex:none}
+.app .bd{text-align:center;border:1px solid #7a3d33;background:#2a1411;color:#ffb8a5;border-radius:999px;padding:4px;font-size:12px}
+.app .stage{flex:1;display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:end}
+.app .stage svg{width:100%;height:auto}
+#chat{max-height:230px;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:2px}
+.m{padding:8px 12px;border-radius:12px;max-width:92%}.m.u{align-self:flex-end;background:#145a48}.m.b{background:#0f2a22;border:1px solid #1d3b33}
+#sup{display:none;border:1px solid #3fd1a8;border-radius:12px;padding:10px 12px;background:#06140f}#sup.on{display:block}
+#sup ul{margin:6px 0;padding-left:18px;color:#cfe5dd;font-size:13px}#sup small{color:#ffb8a5}
+.app .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.app .chips button{border-radius:999px}
+.app form{display:flex;gap:8px;border:1px solid #3fd1a8;border-radius:999px;padding:6px}
+.app input{flex:1;background:none;border:0;color:inherit;font:inherit;padding:6px 10px;outline:0;min-width:0}
+.app form button{border-radius:50%;width:38px;height:38px;padding:0;text-align:center;background:#3fd1a8;color:#04130e;border:0}
+#orb{position:absolute;inset:0;background:#050d0bf2;border-radius:20px;display:none;place-items:center;text-align:center;z-index:5;cursor:pointer}#orb.on{display:grid}
+#orb i{display:block;width:160px;height:160px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(#3fd1a8,#1f9d7f);transform:scale(.6);transition:transform 4s ease-in-out}
+.note{font-size:13px;color:var(--mute);margin-top:12px;text-align:center}
+@media(max-width:980px){.app{grid-template-columns:1fr}.app .nv{display:none}.app .stage{grid-template-columns:90px 1fr}.app .ctr{min-height:0}}
+
+.dg{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--card);padding:12px}
+.dg svg{min-width:780px;width:100%;height:auto;display:block}
+.dg .n{fill:var(--bg);stroke:var(--line);stroke-width:1.5}.dg .hi{stroke:var(--acc);stroke-width:2}.dg .bg{stroke-dasharray:5 4}
+.dg text{fill:var(--text);font:600 14px system-ui,sans-serif}.dg .s{fill:var(--mute);font-weight:400;font-size:12px}
+.dg path{stroke:var(--acc);stroke-width:2;fill:none}.dg #ah{fill:var(--acc)}
+.lv{border-top:4px solid var(--acc)}.lv.e{border-color:#d9a441}.lv.h{border-color:#d9604f}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;margin-bottom:8px;color:var(--mute)}
+.mt{margin-top:24px}
+.limits{border:1px solid color-mix(in srgb,var(--warn) 55%,transparent);border-radius:16px;padding:22px;background:color-mix(in srgb,var(--warn) 7%,transparent)}
+.limits h3{margin:0 0 8px;color:var(--warn)}.limits ul{margin:0;padding-left:20px;color:var(--mute);font-size:15px}
+.tl{counter-reset:s}.tl .card{position:relative}.tl .card.now{border-color:var(--acc)}
+.tl .card b{color:var(--acc);font-size:13px;letter-spacing:.06em}
+.g5{grid-template-columns:repeat(5,1fr)}.g6{grid-template-columns:repeat(6,1fr)}
+@media(max-width:1000px){.g5{grid-template-columns:repeat(2,1fr)}.g6{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.g5{grid-template-columns:1fr}.g6{grid-template-columns:repeat(2,1fr)}}
+.tm2{text-align:center;padding:18px 10px}.tm2 .av{width:58px;height:58px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;font-weight:800;font-size:20px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#04130e}
+.tm2 h3{font-size:15px}.tm2 p{font-size:13px}
+nav ul{gap:16px!important}
+
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--acc);color:#04130e;padding:8px 14px;border-radius:8px;z-index:60}.skip:focus{left:8px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
+.app .help{white-space:nowrap;padding:8px 14px}@media(max-width:980px){.app .hd{flex-wrap:wrap;order:-2}.app .ctr{order:-1}}
+html,body{height:100%}body{overflow:hidden}
+.app{height:100%;border-radius:0;border:0;grid-template-rows:auto minmax(0,1fr) auto}
+.app .col,.app .ctr{overflow:auto;min-height:0}.app .ctr{min-height:0}
+.view{display:none;grid-column:2/-1;overflow:auto;min-height:0;padding-right:4px}.view.on{display:block}
+.app.alt .ctr,.app.alt .rc{display:none}
+.sec{padding:4px 6px 30px}.view h2{font-size:26px}.view .sub{margin-bottom:18px}
+.view .grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}.view .gal{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.nv button.cur{background:#0f2a22;color:#3fd1a8;border-radius:10px}
+.ft{grid-column:1/-1;text-align:center;color:#8fb0a5;font-size:12px}
+@media(max-width:980px){html,body{height:auto}body{overflow:auto}.app{height:auto}.app .col,.app .ctr{overflow:visible}.nv-col{display:contents}
+.app .nv{display:flex;flex-wrap:wrap;order:-3}.app .nv button{width:auto}.app .hd{order:-4}.view{order:-1;grid-column:1/-1}.app .ctr{order:-1}}
+.app{grid-template-columns:230px 1fr 280px}.app .act button{overflow:visible;font-size:10px;padding:8px 0}.app .stage{grid-template-columns:210px 1fr}@media(max-width:980px){.app{grid-template-columns:1fr}.app .stage{grid-template-columns:90px 1fr}}
+.app{background:radial-gradient(900px 520px at 50% 45%,#0c2c25 0,#050d0b 65%)}
+.app .pn,.app .hd{background:rgba(8,26,21,.72);border:1px solid #1e4a3f;border-radius:18px}
+.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:middle}
+.app .nv{padding:10px}.app .nv button{display:flex;align-items:center;gap:14px;width:100%;border:0;padding:12px 14px;font-size:16px;border-radius:12px}
+.app .nv button.cur{background:#0f2f27;color:#3fd1a8}
+.stt{display:flex;flex-wrap:wrap;column-gap:10px;align-items:center;padding:4px 14px}.stt i{width:10px;height:10px;border-radius:50%;background:#3fd1a8}.stt.sp i{background:#3b82f6}.stt b{font-size:15px}.stt small{width:100%;padding-left:20px;color:#8fb0a5}
+.wk{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #12291f}.wk .rg{width:46px;height:46px;border-radius:50%;border:3px solid #1d3b33;display:grid;place-items:center;color:#8fb0a5;flex:none}.wk b{display:block;font-size:16px}.wk small{color:#8fb0a5}
+.app .qa button,.app .say button{display:flex;align-items:center;gap:12px}.app .qa button .ch{margin-left:auto;color:#8fb0a5}
+.app .say h4{display:flex;align-items:center;gap:10px;font-size:17px}
+.app .hdi{border-radius:50%;width:44px;height:44px;padding:0;display:grid;place-items:center;border-color:#2a6a5a}
+.app .hd .logo img{width:46px;height:42px;object-fit:cover;border-radius:6px}
+.app .bar .i{width:28px;height:28px}
+.app .stage{display:flex;flex-direction:column;flex:1;min-height:0;gap:6px}
+.av{position:relative;align-self:center;width:min(360px,100%);flex:none}.av img{width:100%;display:block;-webkit-mask-image:radial-gradient(ellipse 62% 75% at 50% 42%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 62% 75% at 50% 42%,#000 60%,transparent 100%)}
+.av .lst{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;background:#0b1f19;border:1px solid #1e4a3f;border-radius:999px;padding:5px 14px;font-weight:600}.av .lst i{width:9px;height:9px;border-radius:50%;background:#3fd1a8}
+#chat{flex:1;max-height:none;min-height:90px}
+.app form button .i{width:20px;height:20px}
+#ctl{display:none;position:absolute;left:16px;top:84px;width:330px;max-height:calc(100% - 110px);overflow:auto;z-index:7;background:#07130f;border:1px solid #1e4a3f;border-radius:16px;padding:14px;box-shadow:0 20px 60px #000c}#ctl.on{display:block}
+#ctl button{display:block;width:100%;margin-bottom:8px;border-radius:12px;padding:12px 14px;background:#0a1d17}#ctl button.on{border-color:#3fd1a8;color:#3fd1a8;background:#0a2a22}
+#tst{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);background:#0f2f27;border:1px solid #3fd1a8;border-radius:999px;padding:8px 16px;display:none;z-index:8;font-size:13px;max-width:90%;text-align:center}
+.ck{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #12291f}.ck button{width:42px;text-align:center;margin-left:6px}.ck button.on{background:#3fd1a8;color:#04130e;border-color:#3fd1a8}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}.hub button{padding:18px;border-radius:16px;background:#08150f;color:#e8f3ef;border:1px solid #1e4a3f;cursor:pointer;font:inherit;text-align:left}.hub button:hover{border-color:#3fd1a8}
+.app .view button{color:inherit}
+@media(max-width:980px){#ctl{left:10px;right:10px;width:auto;top:70px}.app .nv{display:flex;flex-wrap:wrap}.app .nv button{width:auto;padding:9px 12px}.av{width:min(260px,100%)}}
+.app .ctr>*{flex-shrink:0}.app .stage{flex:1 0 auto}.av{width:min(300px,100%)}#chat{flex:1 1 auto;min-height:90px;max-height:200px}
+
+.pbtn{background:transparent;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font:inherit;font-size:13px;cursor:pointer}
+.pbtn:hover,.pbtn:focus-visible{border-color:var(--acc);color:var(--acc)}
+.m[data-live]::after{content:" · live AI";font-size:11px;color:var(--acc)}
+.vd{position:relative;aspect-ratio:16/9;max-height:62vh;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000}
+.vd img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
+.vd img.on{opacity:1;animation:kb 6s ease-out forwards}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
+.vd .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 20px 16px;background:linear-gradient(transparent,rgba(0,0,0,.82));color:#fff;font-size:17px}
+.vc{display:flex;gap:12px;align-items:center;margin-top:12px}
+.vc .bar{flex:1;height:5px;border-radius:5px;background:var(--line);overflow:hidden}.vc .bar i{display:block;height:100%;width:0;background:var(--acc)}
+.sl{min-height:50vh;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:10px 4px}
+.sl h2{font-size:clamp(28px,5vw,46px);line-height:1.1;margin:0}.sl p,.sl li{font-size:clamp(16px,2.2vw,21px);line-height:1.5;max-width:46ch;color:var(--text)}
+.sl ul{padding-left:20px;margin:0}.sl img{max-width:min(100%,560px);border-radius:14px;border:1px solid var(--line)}
+.pn2{display:flex;gap:10px;align-items:center;margin-top:12px}.pn2 span{color:var(--mute);font-size:14px;flex:1}
+@media (prefers-reduced-motion:reduce){.vd img.on{animation:none}}
+</style>
+</head>
+<body>
+<div class="app" id="app"><svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+<symbol id="i-bars" viewBox="0 0 24 24"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 10v4"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M12 5v14M4 12h16"/></symbol>
+<symbol id="i-per" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></symbol></defs></svg>
+<div class="hd"><div class="logo" style="color:#e8f3ef"><img src="assets/logo.jpg" alt=""><span style="font-size:24px">ROOHVI<small>Your AI Wellness Companion</small></span></div>
+<div class="tm"><b id="clk" style="font-size:20px"></b><small id="dt"></small></div>
+<div style="display:flex;gap:12px;align-items:center"><button class="pbtn" data-view="pitch">Pitch</button><button class="pbtn" data-view="video">Video</button><button class="help" data-act="help">Need help now?</button><button class="hdi" data-act="ctl" aria-label="Controls"><svg class="i"><use href="#i-gear"/></svg></button><button class="hdi" data-view="privacy" aria-label="My data"><svg class="i"><use href="#i-per"/></svg></button></div></div>
+<div class="col nv-col"><div class="pn nv"><button data-view="chat" class="cur"><svg class="i"><use href="#i-chat"/></svg> Chat</button><button data-view="checkin"><svg class="i"><use href="#i-cal"/></svg> Check-in</button><button data-view="activities"><svg class="i"><use href="#i-bars"/></svg> Activities</button><button data-view="support"><svg class="i"><use href="#i-grid"/></svg> Support</button><button data-view="privacy"><svg class="i"><use href="#i-per"/></svg> My data</button><button data-view="settings"><svg class="i"><use href="#i-gear"/></svg> Settings</button></div><div class="stt"><i></i><b id="sb">Listening</b><small id="ss">Take your time</small></div>
+<div class="pn"><h4>This Week</h4><div class="wk"><span class="rg" id="rg-Mood">-</span><div><b>Mood</b><small id="wt-Mood">tracking is off</small></div></div><div class="wk"><span class="rg" id="rg-Energy">-</span><div><b>Energy</b><small id="wt-Energy">tracking is off</small></div></div><div class="wk"><span class="rg" id="rg-Stress">-</span><div><b>Stress</b><small id="wt-Stress">tracking is off</small></div></div><small style="color:#8fb0a5">Your own ratings, not medical</small></div>
+<div class="pn qa"><h4>Quick Actions</h4><button data-view="checkin"><svg class="i"><use href="#i-cal"/></svg> Mood check-in<span class="ch">›</span></button><button data-act="breath"><svg class="i"><use href="#i-bars"/></svg> Breathing<span class="ch">›</span></button><button data-say="Let's do grounding"><svg class="i"><use href="#i-per"/></svg> Grounding<span class="ch">›</span></button><button data-say="Journal prompt"><svg class="i"><use href="#i-doc"/></svg> Journal prompt<span class="ch">›</span></button><button data-act="help"><svg class="i"><use href="#i-grid"/></svg> Get support<span class="ch">›</span></button></div></div>
+<div class="ctr">
+<div class="pn wl"><span class="bar"><svg class="i"><use href="#i-bars"/></svg></span><div>Welcome,<b>friend</b>I'm Roohvi, an AI companion. How are you today?</div></div>
+<div class="bd">Roohvi • AI companion • not a doctor</div>
+<div class="stage"><div class="av"><img src="assets/avatar.jpg" alt="Roohvi avatar"><span class="lst"><i></i>Listening</span></div>
+<div id="chat" aria-live="polite"><div class="m b">Hello, I'm Roohvi, an AI companion. How are you today?</div></div></div>
+<div id="sup"><b style="color:#3fd1a8;font-size:12px;letter-spacing:.1em">SUPPORT RESOURCES</b><ul><li>Police: 15</li><li>Rescue 1122 (Punjab, Sindh incl. Karachi)</li><li>Umang Mental Health Helpline: 0311-7786264 (24/7)</li><li>Rozan Counselling Helpline</li><li>Taskeen Health Initiative</li><li>Ministry of Human Rights Helpline 1099 (abuse, violence, legal advice)</li></ul><small>A helpline is not a substitute for emergency services: if you are in immediate danger, call emergency services first. Confirm numbers before relying on them.</small></div>
+<div class="chips"><button data-say="I feel good">Good</button><button data-say="I feel okay">Okay</button><button data-say="I feel low">Low</button><button data-say="I feel stressed">Stressed</button><button data-say="I feel anxious">Anxious</button></div>
+<form id="f"><button type="button" id="mic" aria-label="Voice (desktop app only)" title="Voice runs in the desktop app"><svg class="i"><use href="#i-mic"/></svg></button><input id="in" aria-label="Type how you feel" placeholder="Type how you feel..." autocomplete="off"><button aria-label="Send"><svg class="i"><use href="#i-send"/></svg></button></form></div>
+<div class="col rc"><div class="pn say"><h4><svg class="i"><use href="#i-bars"/></svg> Try saying...</h4><button data-say="I'm feeling stressed"><svg class="i"><use href="#i-chat"/></svg> “I'm feeling stressed”</button><button data-act="breath"><svg class="i"><use href="#i-bars"/></svg> “Let's do a breathing exercise”</button><button data-view="checkin"><svg class="i"><use href="#i-cal"/></svg> “I'd like a mood check-in”</button><button data-say="I can't switch my thoughts off"><svg class="i"><use href="#i-per"/></svg> “I can't switch my thoughts off”</button><button data-say="Where can I find a counsellor?"><svg class="i"><use href="#i-grid"/></svg> “Where can I find a counsellor?”</button></div>
+<div class="pn"><h4 style="display:flex;justify-content:space-between">Calming Activities <a href="#" data-view="activities" style="color:var(--acc);font-weight:400;font-size:13px">Ask →</a></h4><div class="act"><button data-act="breath"><b style="background:#1f9d7f">ılıl</b>Breathing</button><button data-say="Let's do grounding"><b style="background:#3a7fb5">✋</b>Grounding</button><button data-say="One minute mindful pause"><b style="background:#7a63c9">◈</b>Mindful</button><button data-say="Journal prompt"><b style="background:#c9823a">✎</b>Journal</button><button data-say="Sleep wind-down"><b style="background:#5a63c9">☾</b>Sleep</button><button data-say="Study overwhelm"><b style="background:#c9a23a">▤</b>Study/Work</button><button data-say="Reach out to one person"><b style="background:#c95a63">☎</b>Connect</button><button data-say="More activities"><b style="background:#555e66">…</b>More</button></div></div></div>
+<div class="view" id="v-pitch"><div class="sec"><div class="sl" id="slide"></div><div class="pn2"><button class="pbtn" id="pp">Back</button><span id="pc"></span><button class="pbtn" id="pn">Next</button></div></div></div><div class="view" id="v-video"><div class="sec"><h2>Video walkthrough</h2><p class="sub">An animated tour of the real desktop app, built from its screenshots.</p><div class="vd" id="vd"><img data-s="0" alt="Roohvi home screen"><img data-s="1" alt="Support resources card"><img data-s="2" alt="Controls panel"><img data-s="3" alt="Live session log"><div class="cap" id="vcap" aria-live="polite"></div></div><div class="vc"><button class="pbtn" id="vp">Pause</button><div class="bar"><i id="vb"></i></div></div></div></div><div class="view" id="v-about"><div class="sec"><h2>Roohvi <span style="color:var(--acc)">روحوی</span></h2><p class="sub">A voice-first AI wellness companion for the desktop. It listens in Urdu, Roman Urdu or English, offers one small coping step, and shows the right local helpline within a second when someone may be in danger. Hackathon submission · working prototype. This page is the hosted demo; the PC app is the product.</p>
+<div class="grid g4"><div class="card"><div class="ic">1</div><h3>You talk or type</h3><p>In your own language, voice or text.</p></div><div class="card"><div class="ic">2</div><h3>Safety screens it</h3><p>Two layers check every message.</p></div><div class="card"><div class="ic">3</div><h3>One small step</h3><p>A calming activity, or helplines on screen at once.</p></div><div class="card"><div class="ic">4</div><h3>You stay in control</h3><p>Tracking off by default, data on your device.</p></div></div></div><div class="sec">
+<h2>People need to talk. Few can.</h2>
+<p class="sub">Stigma, cost, distance and language keep many people from a first conversation, and the hardest moments often come at night.</p>
+<div class="grid g3">
+<div class="card stat"><b>0.19</b>psychiatrists per 100,000 people in Pakistan (WHO EMRO)</div>
+<div class="card stat"><b>&gt;4%</b>of Pakistan's total disease burden is mental disorders (WHO Pakistan)</div>
+<div class="card stat"><b>&lt;500</b>psychiatrists for a population above 220 million (Lancet Psychiatry, 2020)</div>
+</div>
+<div class="barriers"><span>Stigma: “log kya kahenge”</span><span>Cost and access</span><span>English-first tools</span><span>Nights with no one awake</span><span>Not knowing where to go</span></div>
+<p class="src">Figures per the Roohvi PRD v1.1; re-check before any funding or partner use.</p>
+</div><div class="sec">
+<h2>Built safety-first, in the user's own language</h2>
+<p class="sub">Every design choice starts from safety, honesty about being an AI, and privacy by default.</p>
+<div class="grid g4">
+<div class="card"><div class="ic">🎙️</div><h3>Voice-first, 3 languages</h3><p>Real-time conversation in Urdu, Roman Urdu and English, with a respectful “aap” tone and typed chat alongside.</p></div>
+<div class="card"><div class="ic">🛡️</div><h3>Two-layer safety screen</h3><p>An instant offline regex screen plus a semantic check. At elevated or high concern a support card appears at once.</p></div>
+<div class="card"><div class="ic">🆘</div><h3>“Need help now?”</h3><p>Always visible. Opens Pakistan-first emergency and crisis lines in one tap, with no model round-trip.</p></div>
+<div class="card"><div class="ic">📞</div><h3>Local helplines</h3><p>Rescue 1122, Police 15, Umang, Rozan, Taskeen and 1099, each with a source and last-verified note.</p></div>
+<div class="card"><div class="ic">🌬️</div><h3>Calming activities</h3><p>Eight guided practices including a breathing circle (in 4, hold 1, out 6) that works offline.</p></div>
+<div class="card"><div class="ic">📈</div><h3>Check-in &amp; weekly look-back</h3><p>Self-reported mood, energy, stress and sleep. Plain averages, never a score or a medical measure.</p></div>
+<div class="card"><div class="ic">📚</div><h3>Sourced knowledge</h3><p>86 reviewed entries with an official source. No diagnosis, no medication advice, no invented facts.</p></div>
+<div class="card"><div class="ic">🔒</div><h3>Private by default</h3><p>Tracking is off until you turn it on, data stays on your device, and you can export or delete it any time.</p></div>
+</div></div><div class="sec">
+<h2>How it is built</h2>
+<p class="sub">One desktop application. Voice goes to Gemini Live; everything else runs on the user's machine.</p>
+<div class="grid g3">
+<div class="card"><h3>Python 3.11 – 3.13</h3><p>Application, safety layer, tools and knowledge search.</p></div>
+<div class="card"><h3>PyQt6</h3><p>Desktop interface, with a three.js 3D character in a web view.</p></div>
+<div class="card"><h3>Gemini Live</h3><p>Real-time voice conversation, with automatic reconnect that keeps context.</p></div>
+<div class="card"><h3>Gemini text model</h3><p>The short semantic safety screen call.</p></div>
+<div class="card"><h3>8 wellness tools</h3><p>Coping activity, mood check-in, support resources, knowledge search, region, wellness data and summary, Nazar.</p></div>
+<div class="card"><h3>86 reviewed entries</h3><p>Coping 30, safety guidance 30 (assistant only), psychoeducation 10, professional help 10, language and culture 6.</p></div>
+</div></div></div><div class="view" id="v-safety"><div class="sec">
+<h2>Safety before helpfulness</h2>
+<p class="sub">Every typed or spoken message is screened by two layers before and while Roohvi replies. The same rules are also written into the system prompt.</p>
+<div class="dg"><svg viewBox="0 0 900 300" role="img" aria-label="Safety pipeline: message, regex and semantic screens, risk level, support card, policy note, reply, output check">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--acc);stroke:none"/></marker></defs>
+<rect class="n" x="10" y="115" width="150" height="70" rx="12"/><text x="85" y="146" text-anchor="middle">User message</text><text class="s" x="85" y="166" text-anchor="middle">typed or spoken</text>
+<rect class="n" x="215" y="30" width="170" height="70" rx="12"/><text x="300" y="60" text-anchor="middle">Regex screen</text><text class="s" x="300" y="80" text-anchor="middle">instant · offline</text>
+<rect class="n bg" x="215" y="200" width="170" height="70" rx="12"/><text x="300" y="230" text-anchor="middle">Semantic screen</text><text class="s" x="300" y="250" text-anchor="middle">Gemini · only raises level</text>
+<rect class="n hi" x="440" y="105" width="185" height="90" rx="12"/><text x="532" y="138" text-anchor="middle">Risk level</text><text class="s" x="532" y="159" text-anchor="middle">LOW · ELEVATED · HIGH</text><text class="s" x="532" y="177" text-anchor="middle">holds and decays</text>
+<rect class="n hi" x="690" y="20" width="200" height="66" rx="12"/><text x="790" y="50" text-anchor="middle">Support card</text><text class="s" x="790" y="70" text-anchor="middle">on screen, no model call</text>
+<rect class="n" x="690" y="117" width="200" height="66" rx="12"/><text x="790" y="147" text-anchor="middle">Policy note to model</text><text class="s" x="790" y="167" text-anchor="middle">shapes the reply</text>
+<rect class="n" x="690" y="214" width="200" height="66" rx="12"/><text x="790" y="244" text-anchor="middle">Output check</text><text class="s" x="790" y="264" text-anchor="middle">on every reply</text>
+<path d="M160 138L215 70" marker-end="url(#ah)"/><path d="M160 162L215 232" marker-end="url(#ah)"/><path d="M385 65L440 130" marker-end="url(#ah)"/><path d="M385 235L440 170" marker-end="url(#ah)"/><path d="M625 130L690 60" marker-end="url(#ah)"/><path d="M625 150L690 150" marker-end="url(#ah)"/><path d="M790 183L790 214" marker-end="url(#ah)"/></svg></div>
+<div class="grid g3 mt">
+<div class="card lv"><span class="tag">LOW</span><h3>Everyday stress</h3><p>Warm and practical. One optional activity when it fits.</p></div>
+<div class="card lv e"><span class="tag">ELEVATED</span><h3>Hopelessness</h3><p>Support card at once. Roohvi slows down, asks one gentle direct question, and encourages a trusted person and a professional.</p></div>
+<div class="card lv h"><span class="tag">HIGH</span><h3>Intent, plan or timing</h3><p>Support card at once. Roohvi says it is an AI that cannot keep you safe, urges emergency services now, and stays present.</p></div>
+</div>
+<div class="barriers"><span>No diagnosis</span><span>No medication advice</span><span>No self-harm methods, in any framing</span><span>No secrecy or safety guarantees</span><span>Memory guard on long-term memory</span></div>
+</div></div><div class="view" id="v-privacy"><div class="sec">
+<h2>Private by default</h2>
+<p class="sub">You stay in control of what is kept.</p>
+<div class="grid g3">
+<div class="card"><div class="ic">✅</div><h3>Consent first</h3><p>A first-run notice must be accepted before the assistant starts.</p></div>
+<div class="card"><div class="ic">🔕</div><h3>Tracking off</h3><p>Nothing about check-ins is saved until you switch tracking on.</p></div>
+<div class="card"><div class="ic">💻</div><h3>Data on your device</h3><p>Stored locally. Only aggregate safety counters are kept, never message text.</p></div>
+<div class="card"><div class="ic">🗑️</div><h3>Export or delete</h3><p>See what is kept, export it, or delete everything after an on-screen confirmation.</p></div>
+<div class="card"><div class="ic">📷</div><h3>Nazar camera is optional</h3><p>Off at every start. One still photo only when you ask, shown to you, never saved, auto-off after 30 minutes.</p></div>
+<div class="card"><div class="ic">☁️</div><h3>Honest about the cloud</h3><p>Speech and text go to Google's Gemini API. A free key may be used by Google to improve products; a billing-enabled key is more private.</p></div>
+</div></div></div><div class="view" id="v-screens"><div class="sec">
+<h2>See it running</h2>
+<p class="sub">Real screenshots from the working prototype. Tap an image to enlarge.</p>
+<div class="grid gal">
+<figure><img src="assets/s1.jpg" alt="Home screen" loading="lazy"><figcaption><b>Home.</b> Greeting, mood chips, quick actions, “Try saying” prompts and the “AI companion · not a doctor” badge.</figcaption></figure>
+<figure><img src="assets/s2.jpg" alt="Support resources card" loading="lazy"><figcaption><b>Support card.</b> Pakistan emergency and crisis lines appear on screen at once when concern is raised.</figcaption></figure>
+<figure><img src="assets/s3.jpg" alt="Controls panel" loading="lazy"><figcaption><b>Controls.</b> Spoken greeting, camera off by default, push-to-talk, animated face, 3D avatar and audio devices.</figcaption></figure>
+<figure><img src="assets/s4.jpg" alt="Live session log" loading="lazy"><figcaption><b>Under the hood.</b> Eight wellness actions load, then a live Gemini voice session connects.</figcaption></figure>
+</div></div></div><div class="view" id="v-roadmap"><div class="sec">
+<h2>Where it stands and what comes next</h2>
+<p class="sub">Roohvi is a working prototype, not ready for the public. Honest limits first.</p>
+<div class="limits"><h3>Known limits (PRD, 4 Oct 2026)</h3><ul>
+<li>The regex screen passes the team's own test sets but only 11 of 24 fresh lines; the semantic layer has been tested with a fake model only.</li>
+<li>No clinical or professional review yet; 16 review findings are open.</li>
+<li>Pakistan helplines were checked on 3–4 Oct 2026; other regions were not re-checked.</li>
+<li>No age gate yet. Local files are plain JSON. The base engine licence (CC BY-NC 4.0) does not allow commercial use.</li></ul></div>
+<div class="grid g5 tl mt">
+<div class="card now"><b>PHASE 0 · NOW</b><h3>Prototype</h3><p>Working app, safety layer, 86 entries, helpline data, tests. Team use only.</p></div>
+<div class="card"><b>PHASE 1</b><h3>Hardening</h3><p>Measure safety on a live model, professional review, verify every helpline, age statement.</p></div>
+<div class="card"><b>PHASE 2</b><h3>Supervised pilot</h3><p>Small group of consenting adults with a named professional adviser.</p></div>
+<div class="card"><b>PHASE 3</b><h3>Improve</h3><p>Roman Urdu and Urdu psychoeducation, “Hey Roohvi” wake word, encryption at rest.</p></div>
+<div class="card"><b>PHASE 4</b><h3>Expand</h3><p>Consider mobile and NGO partnerships, after pilot results and legal advice.</p></div>
+</div></div><div class="sec">
+<h2>The team</h2>
+<div class="grid g6 mt">
+<div class="card tm2"><div class="av">MY</div><h3>Muhammad Younas</h3><p>Team Leader</p></div>
+<div class="card tm2"><div class="av">S</div><h3>Saifullah</h3><p>Team</p></div>
+<div class="card tm2"><div class="av">BH</div><h3>Bibi Hani</h3><p>Team</p></div>
+<div class="card tm2"><div class="av">ZA</div><h3>Zuhaib Ahmed</h3><p>Team</p></div>
+<div class="card tm2"><div class="av">AK</div><h3>Amir Khan</h3><p>Team</p></div>
+<div class="card tm2"><div class="av">M</div><h3>Maria</h3><p>Team</p></div>
+</div></div></div><div class="view" id="v-checkin"><div class="sec"><h2>Check-in</h2><p class="sub">Rate each from 1 (very difficult) to 5 (very good). Your own ratings, never a score or a medical measure.</p><div class="ck" data-k="Mood"><b>Mood</b><span><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></span></div><div class="ck" data-k="Energy"><b>Energy</b><span><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></span></div><div class="ck" data-k="Stress"><b>Stress</b><span><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></span></div><div class="ck" data-k="Sleep"><b>Sleep</b><span><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></span></div><p style="margin-top:16px"><button id="trk">Tracking: off</button> <button id="cks" style="background:#3fd1a8;color:#04130e">Done</button></p></div></div><div class="view" id="v-activities"><div class="sec"><h2>Activities</h2><p class="sub">Eight guided practices. Stop if anything feels uncomfortable.</p><div class="hub"><button data-act="breath"><b style="display:inline-block;width:38px;height:38px;border-radius:12px;text-align:center;line-height:38px;background:#1f9d7f;margin-bottom:8px">ılıl</b><br><b>Breathing</b><br><small style="color:#8fb0a5">In 4, hold 1, out 6, six breaths</small></button><button data-say="Let's do grounding"><b style="display:inline-block;width:38px;height:38px;border-radius:12px;text-align:center;line-height:38px;background:#3a7fb5;margin-bottom:8px">✋</b><br><b>Grounding</b><br><small style="color:#8fb0a5">5-4-3-2-1 senses</small></button><button data-say="One minute mindful pause"><b style="display:inline-block;width:38px;height:38px;border-radius:12px;text-align:center;line-height:38px;background:#7a63c9;margin-bottom:8px">◈</b><br><b>Mindful</b><br><small style="color:#8fb0a5">A one-minute pause</small></button><button data-say="Journal prompt"><b style="display:inline-block;width:38px;height:38px;border-radius:12px;text-align:center;line-height:38px;background:#c9823a;margin-bottom:8px">✎</b><br><b>Journal</b><br><small style="color:#8fb0a5">Three short lines</small></button><button data-say="Sleep wind-down"><b style="display:inline-block;width:38px;height:38px;border-radius:12px;text-align:center;line-height:38px;background:#5a63c9;margin-bottom:8px">☾</b><br><b>Sleep</b><br><small style="color:#8fb0a5">Wind down for rest</small></button><button data-say="Study overwhelm"><b style="display:inline-block;width:38px;height:38px;border-radius:12px;text-align:center;line-height:38px;background:#c9a23a;margin-bottom:8px">▤</b><br><b>Study/Work</b><br><small style="color:#8fb0a5">A 5-minute reset</small></button><button data-say="Reach out to one person"><b style="display:inline-block;width:38px;height:38px;border-radius:12px;text-align:center;line-height:38px;background:#c95a63;margin-bottom:8px">☎</b><br><b>Connect</b><br><small style="color:#8fb0a5">Reach out to one person</small></button><button data-say="More activities"><b style="display:inline-block;width:38px;height:38px;border-radius:12px;text-align:center;line-height:38px;background:#555e66;margin-bottom:8px">…</b><br><b>More</b><br><small style="color:#8fb0a5">Study or work overwhelm</small></button></div></div></div><div class="view" id="v-support"><div class="sec"><h2>Support</h2><p class="sub">Real people and professional help. Roohvi cannot contact anyone for you.</p><div class="card"><b style="color:var(--acc);font-size:12px;letter-spacing:.1em">SUPPORT RESOURCES</b><ul style="line-height:2"><li>Police: 15</li><li>Rescue 1122 (Punjab, Sindh incl. Karachi)</li><li>Umang Mental Health Helpline: 0311-7786264 (24/7)</li><li>Rozan Counselling Helpline</li><li>Taskeen Health Initiative</li><li>Ministry of Human Rights Helpline 1099 (abuse, violence, legal advice)</li></ul><small style="color:#ffb8a5">A helpline is not a substitute for emergency services: if you are in immediate danger, call emergency services first. Confirm numbers before relying on them.</small></div></div></div><div class="view" id="v-settings"><div class="sec"><h2>Settings</h2><p class="sub">Open the controls panel, or read about the project.</p><div class="hub"><button data-act="ctl"><b>⚙ Controls</b><br><small style="color:#8fb0a5">Voice, camera, avatar, audio</small></button><button data-view="pitch"><b>Pitch mode</b><br><small style="color:#8fb0a5">Slides, arrow keys to move</small></button><button data-view="video"><b>Video walkthrough</b><br><small style="color:#8fb0a5">Animated tour of the app</small></button><button data-view="about"><b>About Roohvi</b><br><small style="color:#8fb0a5">Problem, workflow, features, tech</small></button><button data-view="safety"><b>Safety design</b><br><small style="color:#8fb0a5">Pipeline and risk levels</small></button><button data-view="screens"><b>App screenshots</b><br><small style="color:#8fb0a5">The real desktop app</small></button><button data-view="roadmap"><b>Roadmap &amp; team</b><br><small style="color:#8fb0a5">Known limits and next phases</small></button></div></div></div><div class="ft">Roohvi is an AI wellness companion, not a therapist, doctor or emergency service. In immediate danger call Rescue 1122 or Police 15.</div>
+<div id="ctl"></div><div id="tst"></div>
+<div id="orb" role="button" tabindex="0" aria-label="Breathing exercise. Press to stop"><div><i></i><b id="ol" style="font-size:22px">Get ready</b><p style="color:#8fb0a5">Tap anywhere to stop</p></div></div></div>
+<div id="lb"><img alt=""></div>
+<script>
+const lb=document.getElementById('lb'),li=lb.querySelector('img');
+document.querySelectorAll('.gal img').forEach(i=>i.addEventListener('click',()=>{li.src=i.src;lb.classList.add('on')}));
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+
+(()=>{const $=s=>document.querySelector(s),chat=$('#chat'),sup=$('#sup'),orb=$('#orb');const sv=v=>{$('#app').classList.toggle('alt',v!=='chat');document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));document.querySelectorAll('.nv [data-view]').forEach(x=>x.classList.toggle('cur',x.dataset.view===(/^(about|safety|screens|roadmap|pitch|video)$/.test(v)?'settings':v)))};document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>sv(b.dataset.view)));
+const tick=()=>{const d=new Date();$('#clk').textContent=d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});$('#dt').textContent=d.toDateString()};tick();setInterval(tick,30000);
+const add=(t,c)=>{const e=document.createElement('div');e.className='m '+c;e.textContent=t;chat.append(e);chat.scrollTop=1e9;$('.ctr').scrollTop=1e9};
+const ro=/\b(hai|ho|kal|nahi|aaj|karo|raha|rahi|jeene|batao|mujhe|aap|kya|sab|dunga|wajah|tareeqa|kahani|ghabrahat|raat|khatam|bohat)\b/i;
+const R=[[/raat|tonight|khatam|end everything|end it|kill myself|suicide/i,1,"I'm an AI and I can't keep you safe. Please call Rescue 1122 or Police 15 now, or a crisis line, and be with someone you trust. I'm staying right here with you.","Main ek AI hoon aur aap ko mehfooz nahi rakh sakta. Meharbani karke abhi Rescue 1122 ya Police 15 ko call karein aur kisi bharose-mand shakhs ke saath rahein. Main yahin hoon."],
+[/jeene|wajah|die|marna|burden|hopeless|no reason/i,1,"Thank you for telling me, I'm glad you did. Are you having thoughts of hurting yourself or ending your life? Please reach out to someone you trust and a professional. The helplines are on screen.","Shukriya ke aap ne mujhe bataya. Kya aap apni jaan ko nuqsan pohanchane ke baare mein soch rahe hain? Kisi bharose-mand shakhs aur mahir se baat karein. Helplines screen par hain."],
+[/kahani|story|tareeqa|method|how to|research/i,1,"I can't share methods or details about harming yourself, in any framing, including for a story. If this is about how you feel, I'm here to listen. The helplines are on screen.","Main khud ko nuqsan pohanchane ka koi tareeqa nahi bata sakta, kisi bhi andaaz mein. Agar baat aap ke ehsaas ki hai to main sun raha hoon. Helplines screen par hain."],
+[/counsel|therapist|help me find/i,1,"I can show helplines and counselling lines for Pakistan, now on screen. A counsellor or psychologist can assess what you're going through. Please confirm numbers and hours before calling.","Counselling aur helplines screen par hain. Call karne se pehle numbers aur timing confirm kar lein."],
+[/exam|ghabra|stress|anxi|tension|switch my thoughts/i,0,"That sounds like a lot to carry. What is weighing on you most right now? If you like, we can try a two-minute breathing exercise. Just say the word.","Aap ki ghabrahat samajh aati hai, exam se pehle aisa mehsoos hona aam hai. Abhi sab se zyada kis cheez ka dar hai? Chahein to hum do minute ki saans wali mashq kar sakte hain."],
+[/low|sad|udaas/i,0,"I'm sorry it feels heavy. Would you like to tell me what's behind it, or try one small calming step?","Mujhe afsos hai ke dil bhaari hai. Kya aap bata sakte hain wajah kya hai, ya ek chhota sa calming step try karein?"],
+[/good|okay/i,0,"Glad to hear it. Would you like a quick check-in, or just a chat?","Acha laga sun kar. Kya aap check-in karna chahein ge ya bas baat?"],
+[/check-?in/i,0,"Let's do a short check-in. On a scale of 1 to 5, how is your mood right now? (Saved only if you turn tracking on.)","Chhota sa check-in karte hain. 1 se 5 tak, abhi aap ka mood kaisa hai? (Tracking on ho to hi save hota hai.)"],
+[/ground/i,0,"Try 5-4-3-2-1: name 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste. Stop if it feels uncomfortable.",""],
+[/journal/i,0,"Journal prompt: write three lines. What happened, how it felt, and one small thing that might help.",""],
+[/sleep/i,0,"Sleep wind-down: dim the lights, put the phone away, and take slow breaths for a few minutes.",""],
+[/mindful/i,0,"One-minute pause: notice your breath and your feet on the floor. Let thoughts pass without judging them.",""],
+[/remember|my data/i,0,"Nothing about check-ins is saved until tracking is on. Data stays on your device, and you can export or delete it any time.",""],
+[/./,0,"I'm here. Tell me a little more about how you're feeling, or tap a mood below.","Main yahin hoon. Thora aur bataiye ke aap kaisa mehsoos kar rahe hain."]];
+const hist=[];let busy=0,voice=0;
+const speak=t=>{if(voice&&window.speechSynthesis){try{speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}catch(e){}}};
+const reply=(t,live)=>{add(t,'b');if(live)chat.lastChild.dataset.live=1;speak(t);st('Speaking','Answering you now');setTimeout(()=>st('Listening','Take your time'),2600)};
+const bad=/\b\d+\s?(mg|ml)\b|\b(dose|dosage|diagnos\w+|prescri\w+)\b/i;
+const say=async t=>{t=t.trim();if(!t||busy)return;sv('chat');add(t,'u');const r=R.find(x=>x[0].test(t)),u=ro.test(t)&&r[3];sup.classList.toggle('on',!!r[1]);
+if(r[1])return setTimeout(()=>reply(u?r[3]:r[2]),400);
+busy=1;st('Thinking','One moment');let out=null;
+try{hist.push({role:'user',content:t});const ac=new AbortController(),to=setTimeout(()=>ac.abort(),20000);const rs=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:hist.slice(-5)}),signal:ac.signal});clearTimeout(to);const x=rs.ok?await rs.json():null;out=(x&&x.text||'').trim();if(x&&x.crisis)sup.classList.add('on');if(!out||bad.test(out))out=null;else hist.push({role:'assistant',content:out})}catch(e){out=null}
+if(!out&&hist.length&&hist[hist.length-1].role==='user')hist.pop();
+busy=0;reply(out||(u?r[3]:r[2])||r[2],!!out)};
+const help=()=>{sv('chat');sup.classList.add('on');sup.scrollIntoView({block:'nearest',behavior:'smooth'})};
+let bt=[],run=0;const stop=()=>{run=0;bt.forEach(clearTimeout);orb.classList.remove('on')};
+const breath=()=>{orb.classList.add('on');run=1;const i=orb.querySelector('i'),l=$('#ol');let n=0;const cyc=()=>{if(!run)return;if(n++>=6){l.textContent='Well done';return bt.push(setTimeout(stop,1800))}
+i.style.transitionDuration='4s';i.style.transform='scale(1)';l.textContent='Breathe in';
+bt.push(setTimeout(()=>{l.textContent='Hold'},4000),setTimeout(()=>{i.style.transitionDuration='6s';i.style.transform='scale(.6)';l.textContent='Breathe out'},5000),setTimeout(cyc,11000))};cyc()};
+orb.onclick=stop;document.addEventListener('keydown',e=>{if(e.key==='Escape'&&orb.classList.contains('on'))stop()});
+$('#app').addEventListener('click',e=>{const b=e.target.closest('[data-say],[data-act]');if(!b)return;const a=b.dataset.act;
+if(b.dataset.say)say(b.dataset.say);else if(a==='breath')breath();else if(a==='help')help();else $('#in').focus()});
+$('#f').onsubmit=e=>{e.preventDefault();const v=$('#in');say(v.value);v.value=''};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let rec=null;$('#mic').onclick=()=>{if(rec){rec.stop();return}if(!SR)return add('Voice input is not supported in this browser. Please type here. Full Urdu voice runs in the desktop app.','b');rec=new SR();rec.lang='en-US';rec.onstart=()=>st('Listening','Speak now');rec.onresult=e=>{voice=1;say(e.results[0][0].transcript)};rec.onerror=()=>add('Could not use the microphone here. Please type instead.','b');rec.onend=()=>{rec=null;st('Listening','Take your time')};try{rec.start()}catch(e){rec=null}};
+const st=(a,b)=>{const s=$('.stt');s.classList.toggle('sp',a==='Speaking');$('#sb').textContent=a;$('#ss').textContent=b;$('.av .lst').lastChild.textContent=a};
+const tst=t=>{const e=$('#tst');e.textContent=t;e.style.display='block';clearTimeout(tst.t);tst.t=setTimeout(()=>e.style.display='none',2800)};
+const C=[['Fullscreen [F11]'],['Create desktop shortcut'],['Auto-start',0],['Customise assistant'],['Spoken greeting',1],['Nazar (camera)',0],['Wake word: download'],['Push-to-talk',0],['HUD: animated face'],['Avatar: 3D'],['Load 3D avatar (.glb / .vrm)'],['3D view: Bust'],['Audio devices']];const ctl=$('#ctl');
+ctl.innerHTML='<h4 style="display:flex;justify-content:space-between">Controls<span data-x style="cursor:pointer;padding:0 6px" role="button" aria-label="Close controls">✕</span></h4>'+C.map((c,i)=>'<button data-i="'+i+'" class="'+(c[1]?'on':'')+'">'+c[0]+(c.length>1?': '+(c[1]?'on':'off'):'')+'</button>').join('');
+ctl.addEventListener('click',e=>{if(e.target.closest('[data-x]'))return ctl.classList.remove('on');const b=e.target.closest('button');if(!b)return;const c=C[b.dataset.i];if(c.length>1){c[1]^=1;b.classList.toggle('on',!!c[1]);b.textContent=c[0]+': '+(c[1]?'on':'off');if(/Nazar/.test(c[0])&&c[1])tst('Demo only. In the app the camera is off at every start and takes one still photo only when you ask.')}else if(/Fullscreen/.test(c[0])){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}else tst('This control is available in the desktop app.')});
+document.addEventListener('click',e=>{if(e.target.closest('[data-act=ctl]'))ctl.classList.toggle('on');else if(!e.target.closest('#ctl'))ctl.classList.remove('on')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')ctl.classList.remove('on')});let trk=0;$('#trk').onclick=e=>{trk^=1;e.target.textContent='Tracking: '+(trk?'on':'off')};
+document.querySelectorAll('.ck button').forEach(b=>b.onclick=()=>{b.parentNode.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on')});
+$('#cks').onclick=()=>{const v={};document.querySelectorAll('.ck').forEach(r=>{const o=r.querySelector('button.on');if(o)v[r.dataset.k]=o.textContent});const ks=Object.keys(v);if(!ks.length)return tst('Pick a number in at least one row.');
+if(trk)ks.forEach(k=>{const g=$('#rg-'+k);if(g){g.textContent=v[k];$('#wt-'+k).textContent='this week'}});
+sv('chat');add('Check-in: '+ks.map(k=>k.toLowerCase()+' '+v[k]).join(', '),'u');setTimeout(()=>add('Thank you for sharing. These are your own ratings, not a score or a medical measure. '+(trk?'Saved on this device because tracking is on.':'Tracking is off, so this stays in our chat only.'),'b'),500)};
+
+const IM=[...document.querySelectorAll('#v-screens img')].slice(0,4).map(x=>x.src);
+document.querySelectorAll('#vd img').forEach(x=>x.src=IM[+x.dataset.s]);
+const CP=['Home: talk or type, pick a mood, start a calming activity.','Need help? The support card shows Pakistan helplines at once, with no model call.','Controls: voice, camera (off at every start), avatar and audio.','Under the hood: actions loaded and the live voice session connected.'];
+let vi=0,vplay=1,vt=null;const vimgs=document.querySelectorAll('#vd img');
+const vshow=()=>{vimgs.forEach((x,k)=>{x.classList.remove('on');if(k===vi){void x.offsetWidth;x.classList.add('on')}});$('#vcap').textContent=CP[vi];const b=$('#vb');b.style.transition='none';b.style.width='0';void b.offsetWidth;if(vplay){b.style.transition='width 6s linear';b.style.width='100%'}};
+const vnext=()=>{vi=(vi+1)%4;vshow();vloop()};const vloop=()=>{clearTimeout(vt);if(vplay)vt=setTimeout(vnext,6000)};
+$('#vp').onclick=e=>{vplay^=1;e.target.textContent=vplay?'Pause':'Play';vshow();vloop()};
+document.querySelectorAll('[data-view=video]').forEach(b=>b.addEventListener('click',()=>{vi=0;vplay=1;$('#vp').textContent='Pause';vshow();vloop()}));
+const SL=[
+['Roohvi','A voice-first AI wellness companion that listens in Urdu, Roman Urdu or English. It is an AI companion, not a doctor.',0],
+['People need to talk. Few can.',['Stigma: "log kya kahenge"','Cost, distance and not knowing where to start','Most wellbeing tools are English-first','General chatbots are not built for fragile moments'],0],
+['A calm place to put the feeling into words',['Talk or type in your own language','Roohvi reflects what it heard','One short coping practice at a time','Optional self-reported mood check-ins'],1],
+['Safety before helpfulness',['Every message is screened by two layers','Pakistan helplines first: Rescue 1122, Police 15, Umang, Rozan, Taskeen, 1099','"Need help now?" is always one tap away','Roohvi cannot contact anyone, and says so'],2],
+['Private by default',['Nothing about check-ins is saved until tracking is on','Camera is off at every start','Data stays on the device; export or delete anytime'],3],
+['Try it now','Type a message in the chat. Everyday messages get a live AI reply; sensitive ones get the safety flow with helplines.',0]];
+let si=0;const sr=()=>{const s=SL[si];$('#slide').innerHTML='<h2></h2>'+(Array.isArray(s[1])?'<ul>'+s[1].map(()=>'<li></li>').join('')+'</ul>':'<p></p>')+(s[2]!==0?'<img alt="">':'');const sl=$('#slide');sl.querySelector('h2').textContent=s[0];if(Array.isArray(s[1]))sl.querySelectorAll('li').forEach((l,k)=>l.textContent=s[1][k]);else sl.querySelector('p').textContent=s[1];const im=sl.querySelector('img');if(im&&s[2]!==0)im.src=IM[s[2]-1];$('#pc').textContent=(si+1)+' / '+SL.length;$('#pp').disabled=!si;$('#pn').textContent=si===SL.length-1?'Open chat':'Next'};
+$('#pn').onclick=()=>{if(si===SL.length-1)return sv('chat');si++;sr()};$('#pp').onclick=()=>{if(si){si--;sr()}};
+document.addEventListener('keydown',e=>{if(!$('#v-pitch').classList.contains('on'))return;if(e.key==='ArrowRight')$('#pn').click();if(e.key==='ArrowLeft')$('#pp').click()});
+document.querySelectorAll('[data-view=pitch]').forEach(b=>b.addEventListener('click',()=>{si=0;sr()}));
+})();
+</script>
+</body>
+</html>
